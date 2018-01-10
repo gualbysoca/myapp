@@ -1,0 +1,81 @@
+<!--
+  Generated template for the ReservasPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons start>
+        <button ion-button icon-only>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-title>Reservas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    
+
+    <ion-card>
+        <img src="assets/imgs/croquis_completo.jpeg"/>
+        <ion-card-header>
+            <ion-item>
+                <ion-label>Fecha</ion-label>
+                  <ion-select [(ngModel)]="Fecha">
+                    <ion-option value="16122017">Sabado 16 de diciembre</ion-option>
+                    <ion-option value="22122017">Viernes 22 de diciembre</ion-option>
+                  </ion-select>
+              </ion-item>
+        </ion-card-header>
+      
+        <ion-list>
+          <button ion-item>
+            <ion-icon name="ribbon" item-start></ion-icon>
+            VIP Lounge
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="star" item-start></ion-icon>
+            VIP Mesa
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="glasses" item-start></ion-icon>
+            Camarotes
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="beer" item-start></ion-icon>
+            Patio
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="leaf" item-start></ion-icon>
+            Jardín
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="log-in" item-start></ion-icon>
+            Internacional Interior
+          </button>
+
+          <button ion-item>
+            <ion-icon name="cube" item-start></ion-icon>
+            Terraza
+          </button>
+
+          <button ion-item>
+            <ion-icon name="football" item-start></ion-icon>
+            Zona deportiva
+          </button>
+      
+        </ion-list>
+      </ion-card>
+
+
+</ion-content>
