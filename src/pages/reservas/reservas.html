@@ -14,68 +14,43 @@
       </ion-buttons>
     <ion-title>Reservas</ion-title>
   </ion-navbar>
-
+  
 </ion-header>
 
 
 <ion-content padding>
     
+  <img src="assets/imgs/croquis_completo.jpeg"/>
 
-    <ion-card>
-        <img src="assets/imgs/croquis_completo.jpeg"/>
-        <ion-card-header>
-            <ion-item>
-                <ion-label>Fecha</ion-label>
-                  <ion-select [(ngModel)]="Fecha">
-                    <ion-option value="16122017">Sabado 16 de diciembre</ion-option>
-                    <ion-option value="22122017">Viernes 22 de diciembre</ion-option>
-                  </ion-select>
-              </ion-item>
-        </ion-card-header>
-      
-        <ion-list>
-          <button ion-item>
-            <ion-icon name="ribbon" item-start></ion-icon>
-            VIP Lounge
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="star" item-start></ion-icon>
-            VIP Mesa
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="glasses" item-start></ion-icon>
-            Camarotes
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="beer" item-start></ion-icon>
-            Patio
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="leaf" item-start></ion-icon>
-            Jardín
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="log-in" item-start></ion-icon>
-            Internacional Interior
-          </button>
+  
+  <ion-list no-lines>
+    <ion-item>
+      <ion-label>Fecha</ion-label>
+      <ion-select [(ngModel)]="Fecha">
+        <ion-option value="16122017">Sabado 16 de diciembre</ion-option>
+        <ion-option value="22122017">Viernes 22 de diciembre</ion-option>
+      </ion-select>
+    </ion-item>   
+  </ion-list>      
+ 
 
-          <button ion-item>
-            <ion-icon name="cube" item-start></ion-icon>
-            Terraza
-          </button>
-
-          <button ion-item>
-            <ion-icon name="football" item-start></ion-icon>
-            Zona deportiva
-          </button>
-      
-        </ion-list>
-      </ion-card>
-
+  <ion-list>
+      <ion-item detail-none (click)="expandItem(item)"  *ngFor="let item of zonas">
+        <ion-icon name="{{item.icono}}" item-start></ion-icon>
+        {{item.nombre}}
+        <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
+            <ion-list>
+                <button ion-item>
+                  <h2>Item List 1</h2>
+                </button>
+                <button ion-item>
+                  <h2>Item list 2</h2>
+                </button>
+            </ion-list>
+        </expandable>
+        <ion-badge color="{{item.color}}" item-end>{{item.disponibilidad}}</ion-badge>
+      </ion-item>
+    </ion-list>
+  
 
 </ion-content>
