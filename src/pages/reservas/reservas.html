@@ -34,17 +34,14 @@
   </ion-list>      
  
 
-  <ion-list>
+  <ion-list no-lines>
       <ion-item detail-none (click)="expandItem(item)"  *ngFor="let item of zonas">
         <ion-icon name="{{item.icono}}" item-start></ion-icon>
         {{item.nombre}}
-        <expandable [expandHeight]="itemExpandHeight" [expanded]="item.expanded">
-            <ion-list>
-                <button ion-item>
-                  <h2>Item List 1</h2>
-                </button>
-                <button ion-item>
-                  <h2>Item list 2</h2>
+        <expandable [expandHeight]="itemExpandHeight * item.capzona" [expanded]="item.expanded">
+            <ion-list no-lines>
+                <button ion-item *ngFor="let mesa of item.mesas">
+                  Mesa {{mesa}}
                 </button>
             </ion-list>
         </expandable>
