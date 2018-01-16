@@ -1,0 +1,33 @@
+<ion-menu [content]="content">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list no-lines>
+            <!--<button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)" [class.activeHighLight]="checkActive(p)">-->
+            <button ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)">  
+              <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+              {{p.title}}
+            </button>
+            <!--<button ion-item menuClose (click)="openPage('MenuPage')" [class.activeHighLight]="checkActive('MenuPage')">
+                Reservas
+            </button>
+            <hr>
+            <button ion-item menuClose (click)="openPage('MisreservasPage')" [class.activeHighLight]="checkActive('MisreservasPage')">
+                Mis reservas
+            </button>
+            <button ion-item menuClose (click)="openPage('MiperfilPage')" [class.activeHighLight]="checkActive('MiperfilPage')">
+                 Mi perfil
+            </button>
+            <hr>
+            
+            <button ion-item (click)="closeMenu()">
+              Close Menu
+            </button>-->
+        </ion-list>
+    </ion-content>
+</ion-menu>
+      
+<ion-nav id="nav" #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>

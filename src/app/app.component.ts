@@ -1,18 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
-  rootPage:any = TabsPage;
-  activePage: any;
+  //@ViewChild(Nav) nav: Nav;
+  rootPage:any = 'LoginPage';
+  //activePage: any;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
 
@@ -23,18 +23,19 @@ export class MyApp {
       splashScreen.hide();
 
     });
-    this.activePage = null;
+    //this.activePage = null;
   }
-
+  /*
   openPage(page){
     console.log("ingresa..");
     this.nav.push(page);
     //this.nav.setRoot(page);
-    this.activePage = page;
+    //this.activePage = page;
   }
 
+  
   checkActive(page){
     return page == this.activePage;
   }
-
+  */
 }

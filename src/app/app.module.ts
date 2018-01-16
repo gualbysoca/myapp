@@ -3,24 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+//import { TabsPage } from '../pages/tabs/tabs';
 import { ReservasPage } from '../pages/reservas/reservas';
 import { EventosPage } from '../pages/eventos/eventos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ExpandableComponent } from '../components/expandable/expandable';
+//import { MenuPage } from '../pages/menu/menu';
 
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    TabsPage,
-    ReservasPage,
-    EventosPage,
-    ExpandableComponent
+    MyApp
+    //TabsPage,
+    //MenuPage
   ],
   imports: [
     BrowserModule,
@@ -28,12 +24,9 @@ import { ExpandableComponent } from '../components/expandable/expandable';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    TabsPage,
-    ReservasPage,
-    EventosPage,
-    ExpandableComponent
+    MyApp
+    //TabsPage,
+    //MenuPage
   ],
   providers: [
     StatusBar,
