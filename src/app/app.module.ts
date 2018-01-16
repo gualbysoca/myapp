@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ExpandableComponent } from '../components/expandable/expandable';
 
+
 @NgModule({
   declarations: [
     MyApp,
@@ -19,7 +20,7 @@ import { ExpandableComponent } from '../components/expandable/expandable';
     TabsPage,
     ReservasPage,
     EventosPage,
-    ExpandableComponent 
+    ExpandableComponent
   ],
   imports: [
     BrowserModule,
