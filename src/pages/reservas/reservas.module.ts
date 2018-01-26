@@ -3,6 +3,8 @@ import { IonicPageModule } from 'ionic-angular';
 import { ReservasPage } from './reservas';
 import { ExpandableComponent } from '../../components/expandable/expandable';
 
+
+
 @NgModule({
   declarations: [
     ReservasPage,

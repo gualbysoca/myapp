@@ -20,7 +20,7 @@
 
 <ion-content padding>
     
-  <img src="assets/imgs/croquis_completo.jpeg"/>
+  <img src="assets/imgs/croquis_completo.jpeg" #myImage (click)="presentImage(myImage)"/>
 
   
   <ion-list no-lines>
@@ -48,6 +48,8 @@
         <ion-badge color="{{item.color}}" item-end>{{item.disponibilidad}}</ion-badge>
       </ion-item>
     </ion-list>
+
+    
   
 
 </ion-content>

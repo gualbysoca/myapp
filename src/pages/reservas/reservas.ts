@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController, MenuController } from 'ionic-angular';
 
-
 // Import the config-related things
 import { MY_CONFIG_TOKEN, MY_CONFIG, ApplicationConfig } from '../../assets/config/app-config';
+
+import { ImageViewerController } from 'ionic-img-viewer';
 
 
 
@@ -22,23 +23,32 @@ import { MY_CONFIG_TOKEN, MY_CONFIG, ApplicationConfig } from '../../assets/conf
 })
 
 export class ReservasPage {
+  _imageViewerCtrl: ImageViewerController;
 
   itemExpandHeight: number;
   zonas: Array<any> = [];
 
   constructor(@Inject(MY_CONFIG_TOKEN) private config: ApplicationConfig, 
-              public navCtrl: NavController, 
+              public navCtrl: NavController,
               public navParams: NavParams, 
               private alertCtrl: AlertController, 
               public loadingCtrl: LoadingController,
               public toastCtrl: ToastController,
+              public imageViewerCtrl: ImageViewerController,
               public menuCtrl: MenuController) {
     this.itemExpandHeight = config.itemExpandHeight;
     this.zonas = config.zonas;
     menuCtrl.enable(true);
-    
+    this._imageViewerCtrl = imageViewerCtrl;
   }
 
+  presentImage(myImage) {
+    const imageViewer = this._imageViewerCtrl.create(myImage);
+    imageViewer.present();
+ 
+    //setTimeout(() => imageViewer.dismiss(), 1000);
+    //imageViewer.onDidDismiss(() => alert('Viewer dismissed'));
+  }
 
   expandItem(item){
     //console.log("Entra...");
@@ -111,5 +121,7 @@ export class ReservasPage {
   openMenu() {
     this.menuCtrl.open();
   }
+
+  
 
 }

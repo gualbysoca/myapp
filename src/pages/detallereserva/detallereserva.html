@@ -1,0 +1,102 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons right>
+          <button ion-button icon-only (click)="openMenu(res.estado)">
+            <ion-icon name="more"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>{{res.zona}} - {{res.fecha}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+
+      <ion-card-header >
+        Estado de tu reserva:
+      </ion-card-header>
+        
+      <ion-card-content>
+          <div align=center>
+              <h1><ion-icon [name]='whichIcon(res.estado)'[color]="whichColor(res.estado)"></ion-icon> <b>{{res.estado}}</b></h1>
+          </div><br>
+          <b>Zona:</b> {{res.zona}}<br>
+          <b>Mesa:</b> {{res.mesa}}<br>
+          <b>Fecha:</b> {{res.fecha}}<br>
+          <b>Costo:</b> Bs.{{res.costo}} (en consumo)<br>
+          <b>Capacidad:</b> {{res.capacidad}}<hr>
+          
+          <span *ngFor="let mensaje of mensajes">
+            <p *ngIf="res.estado==mensaje.tipo">{{mensaje.msj}}</p>
+          </span>
+
+      </ion-card-content>
+  </ion-card>
+
+
+  <ion-grid *ngIf="res.estado!='pendiente' && res.estado!='rechazada' && res.estado!='cancelada' && res.estado!='caducada'">
+    <ion-row>
+      <ion-col col-2>
+          <img src="assets/imgs/1grey.png" *ngIf="res.estado=='preaprobada'"/>
+          <img src="assets/imgs/checked.png" *ngIf="res.estado!='preaprobada'"/>
+      </ion-col>
+      <ion-col col-10>    
+          Para completar tu reserva realiza el pago a nuestra cuenta:<br><br>
+      
+          <b>Banco:</b> BISA<br>
+          <b>Nombre:</b> Zukunft SRL<br>
+          <b>Nro. de cuenta:</b> 4548710010<br>
+          <b>NIT:</b> 297902024<br><br>
+      </ion-col>    
+    </ion-row>
+    <ion-row>
+        <ion-col col-2>
+          <img src="assets/imgs/2grey.png" *ngIf="res.estado=='preaprobada'"/>
+          <img src="assets/imgs/checked.png" *ngIf="res.estado!='preaprobada'"/>
+        </ion-col>
+        <ion-col col-10>    
+            Envíanos tu comprobante de depósito<br>
+            
+            <button ion-button clear item-left icon-left>
+              <ion-icon name="camera" color="dark"></ion-icon>
+              Capturar imágen
+            </button><br>
+            <button ion-button clear item-left icon-left>
+              <ion-icon name="image" color="dark"></ion-icon>
+              Subir imágen
+            </button><br>
+        </ion-col>    
+      </ion-row>
+      <ion-row>
+      <ion-col col-2>
+          <img src="assets/imgs/3grey.png" *ngIf="res.estado=='pagada' || res.estado=='preaprobada'"/>
+          <img src="assets/imgs/checked.png" *ngIf="res.estado!='pagada' && res.estado!='preaprobada'"/>
+      </ion-col>
+      <ion-col col-10>    
+          Aguarda nuestra confirmación.
+      </ion-col>    
+    </ion-row>
+      <ion-row *ngIf="res.estado=='preaprobada' || res.estado=='pagada' || res.estado=='reservada'">
+      <ion-col col-2>
+          <img src="assets/imgs/4grey.png"/>
+      </ion-col>
+      <ion-col col-10>    
+          Invita a tus amigos y publica tu evento en Facebook.<br>
+            
+          <button ion-button clear item-left icon-left *ngIf="res.estado=='reservada'">
+            <ion-icon name="person-add" color="dark"></ion-icon>
+            Invitar amigos
+          </button><br>
+          <button ion-button clear item-left icon-left *ngIf="res.estado=='reservada'">
+            <ion-icon name="logo-facebook" color="dark"></ion-icon>
+            Publicar en Facebook
+          </button><br>
+      </ion-col>    
+    </ion-row>
+  </ion-grid>
+
+    
+</ion-content>

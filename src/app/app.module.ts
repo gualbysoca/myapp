@@ -3,28 +3,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-//import { TabsPage } from '../pages/tabs/tabs';
-import { ReservasPage } from '../pages/reservas/reservas';
-import { EventosPage } from '../pages/eventos/eventos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import { MenuPage } from '../pages/menu/menu';
+import { DetallereservaPage } from '../pages/detallereserva/detallereserva';
+
+//Para haceer el Zoom de la imagen del croquis
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
+    DetallereservaPage
     //TabsPage,
     //MenuPage
   ],
   imports: [
     BrowserModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    DetallereservaPage
     //TabsPage,
     //MenuPage
   ],

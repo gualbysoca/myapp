@@ -5,6 +5,7 @@ import { InjectionToken } from "@angular/core";
 export interface ApplicationConfig {
     zonas: Array<any>;
     itemExpandHeight: number;
+    mensajes: Array<any>;
   }
   
   // Configuration values for our app
@@ -100,8 +101,37 @@ export interface ApplicationConfig {
             capzona: 1,
             mesas: ['1']
         }
+    ],
+    mensajes: [
+        {
+            tipo: 'pendiente', 
+            msj: 'Te haremos saber pronto si tu reserva fue pre-aprobada.'
+        },
+        {
+            tipo: 'preaprobada', 
+            msj: 'Tu solicitud fue pre-aprobada. Por favor sigue los pasos indicados abajo para completar tu reserva.'
+        },
+        {
+            tipo: 'pagada', 
+            msj: 'Gracias por enviarnos tu comprobante. Verificaremos tu pago y te confirmaremos tu reserva.'
+        },
+        {
+            tipo: 'reservada', 
+            msj: 'Tu reserva fue completada!'
+        },
+        {
+            tipo: 'cancelada', 
+            msj: 'Esta reservación fue cancelada por el cliente.'
+        },
+        {
+            tipo: 'rechazada', 
+            msj: 'Esta reservación fue rechazada por el local.'
+        },
+        {
+            tipo: 'caducada', 
+            msj: 'Reserva caducada.'
+        }
     ]
-
   };
   
   // Create a config token to avoid naming conflicts
