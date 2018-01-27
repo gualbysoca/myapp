@@ -114,8 +114,11 @@ export class DetallereservaPage {
     }
   
     this.camera.getPicture(cameraOptions)
-      .then(file_uri => this.imageSrc = file_uri, 
-      err => console.log(err));   
+      .then((file_uri) => {
+        this.base64Image = "data:image/jpeg;base64," + file_uri;
+      }, (err) => {
+        console.log(err);
+      });   
   }
 
   takePicture(){
