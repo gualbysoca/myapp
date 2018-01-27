@@ -1,13 +1,8 @@
 import { Component, Inject } from '@angular/core';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Platform, IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ApplicationConfig, MY_CONFIG_TOKEN, MY_CONFIG } from '../../assets/config/app-config';
 
-/**
- * Generated class for the DetallereservaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,6 +11,7 @@ import { ApplicationConfig, MY_CONFIG_TOKEN, MY_CONFIG } from '../../assets/conf
   providers: [{ provide: MY_CONFIG_TOKEN, useValue: MY_CONFIG }]
 })
 export class DetallereservaPage {
+  public base64Image: string;
   res;
   mensajes: Array<any> = [];
   menuButtons: any = {
@@ -93,6 +89,7 @@ export class DetallereservaPage {
               public platform: Platform,
               public navCtrl: NavController,
               public navParams: NavParams,
+              private camera: Camera,
               public actionSheetCtrl: ActionSheetController) {
     this.res = navParams.data.res;
     this.mensajes = config.mensajes;
@@ -103,6 +100,19 @@ export class DetallereservaPage {
   /*ionViewDidLoad(){
     console.log(this.menuButtons.preaprobada.mensaje);
   }*/
+
+  takePicture(){
+    this.camera.getPicture({
+        destinationType: this.camera.DestinationType.DATA_URL,
+        targetWidth: 1000,
+        targetHeight: 1000
+    }).then((imageData) => {
+      // imageData is a base64 encoded string
+        this.base64Image = "data:image/jpeg;base64," + imageData;
+    }, (err) => {
+        console.log(err);
+    });
+  }
 
   whichIcon(estado){
     switch(estado) { 

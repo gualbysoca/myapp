@@ -10,6 +10,8 @@ import { DetallereservaPage } from '../pages/detallereserva/detallereserva';
 
 //Para haceer el Zoom de la imagen del croquis
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+//Para hacer uso nativo de la camara
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -33,6 +35,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
   ],
   providers: [
     StatusBar,
+    Camera,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

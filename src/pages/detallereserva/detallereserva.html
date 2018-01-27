@@ -60,7 +60,7 @@
         <ion-col col-10>    
             Envíanos tu comprobante de depósito<br>
             
-            <button ion-button clear item-left icon-left>
+            <button (click)="takePicture()" ion-button clear item-left icon-left>
               <ion-icon name="camera" color="dark"></ion-icon>
               Capturar imágen
             </button><br>
@@ -68,6 +68,7 @@
               <ion-icon name="image" color="dark"></ion-icon>
               Subir imágen
             </button><br>
+            <img [src]="base64Image" *ngIf="base64Image" />
         </ion-col>    
       </ion-row>
       <ion-row>
