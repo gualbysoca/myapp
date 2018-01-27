@@ -64,11 +64,12 @@
               <ion-icon name="camera" color="dark"></ion-icon>
               Capturar imágen
             </button><br>
-            <button ion-button clear item-left icon-left>
+            <button (click)="openGallery()" ion-button clear item-left icon-left>
               <ion-icon name="image" color="dark"></ion-icon>
               Subir imágen
             </button><br>
             <img [src]="base64Image" *ngIf="base64Image" />
+            <img [src]="imageSrc" *ngIf="imageSrc"/> 
         </ion-col>    
       </ion-row>
       <ion-row>
