@@ -5,12 +5,14 @@ import { InjectionToken } from "@angular/core";
 export interface ApplicationConfig {
     zonas: Array<any>;
     itemExpandHeight: number;
+    FB_APP_ID: number;
     mensajes: Array<any>;
   }
   
   // Configuration values for our app
   export const MY_CONFIG: ApplicationConfig = {
     itemExpandHeight: 44,
+    FB_APP_ID: 349087275553642,
     zonas: [
         {
             nombre: "VIP Lounge",

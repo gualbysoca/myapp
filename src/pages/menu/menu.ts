@@ -25,7 +25,7 @@ export class MenuPage {
     {title: 'Eventos', pageName: 'TabsPage', tabComponent: 'EventosPage', index: 1, icon: 'calendar'},
     {title: 'Mis reservas', pageName: 'MisreservasPage', icon: 'list'},
     {title: 'Mi perfil', pageName: 'MiperfilPage', icon: 'contact'},
-    {title: 'Salir', pageName: 'TabsPage', icon: 'log-out'} //ojo con esto, no estoy muy seguro de como implementarlo
+    {title: 'Salir', pageName: 'LogoutPage', icon: 'log-out'}
   ]
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

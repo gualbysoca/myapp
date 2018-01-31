@@ -12,7 +12,6 @@ import { ApplicationConfig, MY_CONFIG_TOKEN, MY_CONFIG } from '../../assets/conf
 })
 export class DetallereservaPage {
   public base64Image: string;
-  private imageSrc: string;
   res;
   mensajes: Array<any> = [];
   menuButtons: any = {
@@ -104,13 +103,13 @@ export class DetallereservaPage {
 
   openGallery () {
     let cameraOptions = {
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: this.camera.DestinationType.FILE_URI,      
-      quality: 100,
+      sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+      destinationType: this.camera.DestinationType.DATA_URL,      
+      //quality: 100,
       targetWidth: 1000,
       targetHeight: 1000,
-      encodingType: this.camera.EncodingType.JPEG,      
-      correctOrientation: true
+      //encodingType: this.camera.EncodingType.JPEG,      
+      //correctOrientation: true
     }
   
     this.camera.getPicture(cameraOptions)

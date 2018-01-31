@@ -69,13 +69,13 @@
               Subir imágen
             </button><br>
             <img [src]="base64Image" *ngIf="base64Image" />
-            <!--<img [src]="imageSrc"/> -->
         </ion-col>    
       </ion-row>
       <ion-row>
       <ion-col col-2>
           <img src="assets/imgs/3grey.png" *ngIf="res.estado=='pagada' || res.estado=='preaprobada'"/>
-          <img src="assets/imgs/checked.png" *ngIf="res.estado!='pagada' && res.estado!='preaprobada'"/>
+          <img src="assets/imgs/checked.png" *ngIf="res.estado!='pagada' && res.estado!='preaprobada'"/> 
+          
       </ion-col>
       <ion-col col-10>    
           Aguarda nuestra confirmación.

@@ -12,7 +12,20 @@ import { DetallereservaPage } from '../pages/detallereserva/detallereserva';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 //Para hacer uso nativo de la camara
 import { Camera } from '@ionic-native/camera';
+//import { NativeStorage } from '@ionic-native/native-storage';
+//Para hacer login con Facebook y Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
+
+const firebase = {
+  apiKey: "AIzaSyDv2VM3z7d0oDk0co4JDYw__43bd0NmC3c",
+  authDomain: "cortijoapp.firebaseapp.com",
+  databaseURL: "https://cortijoapp.firebaseio.com",
+  projectId: "cortijoapp",
+  storageBucket: "cortijoapp.appspot.com",
+  messagingSenderId: "28265873428"
+};
 
 @NgModule({
   declarations: [
@@ -24,7 +37,9 @@ import { Camera } from '@ionic-native/camera';
   imports: [
     BrowserModule,
     IonicImageViewerModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebase),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,6 +52,7 @@ import { Camera } from '@ionic-native/camera';
     StatusBar,
     Camera,
     SplashScreen,
+    //NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
