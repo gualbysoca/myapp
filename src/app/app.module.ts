@@ -13,12 +13,17 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 //Para hacer uso nativo de la camara
 import { Camera } from '@ionic-native/camera';
 //import { NativeStorage } from '@ionic-native/native-storage';
-//Para hacer login con Facebook y Firebase
+
+//Para hacer login Web con Facebook y Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+//Para hacer login nativo con Facebook y Firebase
+import {Facebook} from '@ionic-native/facebook';
+import firebase from 'firebase';
 
-const firebase = {
+
+export const firebaseConfig = {
   apiKey: "AIzaSyDv2VM3z7d0oDk0co4JDYw__43bd0NmC3c",
   authDomain: "cortijoapp.firebaseapp.com",
   databaseURL: "https://cortijoapp.firebaseio.com",
@@ -26,6 +31,8 @@ const firebase = {
   storageBucket: "cortijoapp.appspot.com",
   messagingSenderId: "28265873428"
 };
+
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -38,7 +45,7 @@ const firebase = {
     BrowserModule,
     IonicImageViewerModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebase),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
@@ -52,6 +59,7 @@ const firebase = {
     StatusBar,
     Camera,
     SplashScreen,
+    Facebook,
     //NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

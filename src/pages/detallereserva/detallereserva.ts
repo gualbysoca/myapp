@@ -92,7 +92,7 @@ export class DetallereservaPage {
               private camera: Camera,
               public actionSheetCtrl: ActionSheetController) {
     this.res = navParams.data.res;
-    this.mensajes = config.mensajes;
+    this.mensajes = this.config.mensajes;
   }
 
   //pendiente, preaprobada, pagada, reservada, cancelada, rechazada

@@ -3,16 +3,22 @@ import { InjectionToken } from "@angular/core";
 // Although the ApplicationConfig interface plays no role in dependency injection, 
 // it supports typing of the configuration object within the class.
 export interface ApplicationConfig {
-    zonas: Array<any>;
     itemExpandHeight: number;
-    FB_APP_ID: number;
+    fb_app_id: number;
+    fb_app_name: string;
+    login_welcome_msg: string;
+    login_error_msg: string;
+    zonas: Array<any>;
     mensajes: Array<any>;
   }
   
   // Configuration values for our app
   export const MY_CONFIG: ApplicationConfig = {
     itemExpandHeight: 44,
-    FB_APP_ID: 349087275553642,
+    fb_app_id: 1911041442545688,
+    fb_app_name: "El_Cortijo_App",
+    login_welcome_msg: "Bienvenido al Cortijo #ViejosNuevosAmigos.",
+    login_error_msg: "Ocurrió algún error al realizar el login.",
     zonas: [
         {
             nombre: "VIP Lounge",

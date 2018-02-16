@@ -36,8 +36,8 @@ export class ReservasPage {
               public toastCtrl: ToastController,
               public imageViewerCtrl: ImageViewerController,
               public menuCtrl: MenuController) {
-    this.itemExpandHeight = config.itemExpandHeight;
-    this.zonas = config.zonas;
+    this.itemExpandHeight = this.config.itemExpandHeight;
+    this.zonas = this.config.zonas;
     menuCtrl.enable(true);
     this._imageViewerCtrl = imageViewerCtrl;
   }
