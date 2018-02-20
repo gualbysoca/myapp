@@ -26,9 +26,8 @@
   <ion-list no-lines>
     <ion-item>
       <ion-label>Fecha</ion-label>
-      <ion-select [(ngModel)]="Fecha">
-        <ion-option value="16122017">Sabado 16 de diciembre</ion-option>
-        <ion-option value="22122017">Viernes 22 de diciembre</ion-option>
+      <ion-select [(ngModel)]="date" interface="action-sheet">
+        <ion-option value="{{fecha}}" *ngFor="let fecha of fechas" >{{fecha}}</ion-option>
       </ion-select>
     </ion-item>   
   </ion-list>      

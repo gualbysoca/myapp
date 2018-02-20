@@ -18,7 +18,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
   providers: [{ provide: MY_CONFIG_TOKEN, useValue: MY_CONFIG }]
 })
 export class LoginPage {
-  //FB_APP_ID: number;
+  userData: any;
 
   constructor(@Inject(MY_CONFIG_TOKEN) private config: ApplicationConfig,
               public navCtrl: NavController, 
@@ -50,7 +50,12 @@ export class LoginPage {
   }
 
   loginWithNativeFB(){
-    this.facebook.login(['email']).then((res)=>{
+    this.facebook.login(['email', 'public_profile', 'user_friends']).then((res)=>{
+
+      this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+      });
+
       const fc = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
       firebase.auth().signInWithCredential(fc).then((fs)=>{
         this.presentToast(this.config.login_welcome_msg);
@@ -61,14 +66,14 @@ export class LoginPage {
       })
     }).catch((error)=>{
       console.log(JSON.stringify(error));
-      this.presentToast(this.config.login_error_msg);
+      this.presentToast(this.config.login_error_msg + " " + error);
     })
   }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 4000
+      duration: this.config.toast_duration
     });
     toast.present();
   }

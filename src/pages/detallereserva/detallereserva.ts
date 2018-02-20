@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
 import { Platform, IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { ApplicationConfig, MY_CONFIG_TOKEN, MY_CONFIG } from '../../assets/config/app-config';
+//import {invitePage} from '../invite/invite.ts';
 
 
 @IonicPage()
@@ -197,6 +198,11 @@ export class DetallereservaPage {
       buttons: estado == 'reservada' ? this.menuButtons.reservada.buttons : this.menuButtons.preaprobada.buttons
     });
     actionSheet.present();
+  }
+
+  inviteFriends(){
+    //alert("estamos por invitar amigos...");
+    this.navCtrl.push('InvitePage', {res: this.res});
   }
 
 }

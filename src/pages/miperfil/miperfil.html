@@ -20,4 +20,13 @@
 
 <ion-content padding>
 
+  <ion-card *ngIf="userData">
+    <ion-card-header>{{ userData.username }}</ion-card-header>
+      <img [src]="userData.picture" />
+    <ion-card-content>
+      <p>Nombre: {{ userData.first_name }}</p>
+      <p>Email: {{ userData.email }}</p>
+    </ion-card-content>
+      </ion-card>
+
 </ion-content>

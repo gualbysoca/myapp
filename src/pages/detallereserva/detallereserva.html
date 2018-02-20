@@ -88,7 +88,7 @@
       <ion-col col-10>    
           Invita a tus amigos y publica tu evento en Facebook.<br>
             
-          <button ion-button clear item-left icon-left *ngIf="res.estado=='reservada'">
+          <button ion-button clear item-left icon-left *ngIf="res.estado=='reservada'" (click)="inviteFriends()">
             <ion-icon name="person-add" color="dark"></ion-icon>
             Invitar amigos
           </button><br>

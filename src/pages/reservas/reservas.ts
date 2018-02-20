@@ -27,6 +27,7 @@ export class ReservasPage {
 
   itemExpandHeight: number;
   zonas: Array<any> = [];
+  fechas: Array<any> = [];
 
   constructor(@Inject(MY_CONFIG_TOKEN) private config: ApplicationConfig, 
               public navCtrl: NavController,
@@ -38,6 +39,7 @@ export class ReservasPage {
               public menuCtrl: MenuController) {
     this.itemExpandHeight = this.config.itemExpandHeight;
     this.zonas = this.config.zonas;
+    this.fechas = this.config.fechas;
     menuCtrl.enable(true);
     this._imageViewerCtrl = imageViewerCtrl;
   }
