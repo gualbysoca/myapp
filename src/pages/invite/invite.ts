@@ -9,6 +9,7 @@ import { Facebook } from '@ionic-native/facebook';
   templateUrl: 'invite.html',
 })
 export class InvitePage {
+  public isSearchbarOpnened=false;
   searchQuery: string = '';
   friendList: Array<any>;
   contactos: Array<any> = [
@@ -501,7 +502,7 @@ export class InvitePage {
   }
 
   updateList(){
-    console.log("nuevo check");
+    console.log("nuevo");
   }
 
 }

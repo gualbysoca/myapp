@@ -7,7 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>invite</ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">invite</ion-title>
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton=true (ionInput)="getItems($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
+    <ion-buttons end>
+      <button ion-button ionc-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
   
@@ -15,41 +22,30 @@
 </ion-header>
 
 
-<ion-content>
- 
-
-  <ion-card>
-          <ion-card-header no-padding>
-              <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-          </ion-card-header>
+<ion-content> 
+    <ion-card>
         
-          <ion-scroll scrollY="true">
-            <ion-list no-lines no-padding>
-              <ion-item *ngFor="let item of friendList">
-                <ion-label>
-                  <ion-grid>
-                    <ion-row>
-                        <ion-col col-2>
-                  <ion-avatar>
-                    <img [src]="item.picture.data.url" />
-                  </ion-avatar>
-                        </ion-col>
-                        <ion-col col-10>
-                          <p>{{item.name}}</p>
-                        </ion-col>
-                </ion-row>
-                </ion-grid>
-                </ion-label>
-                <ion-checkbox item-right [(ngModel)]="item.id" (ionChange)="updateList()"></ion-checkbox>
-              </ion-item>
-            </ion-list>
-          </ion-scroll>
-  </ion-card>  
-
-
-                          
-
-
-  
-
+      
+        <ion-scroll scrollY="true">
+          <ion-list no-lines no-padding>
+            <ion-item *ngFor="let item of friendList">
+              <ion-label>
+                <ion-grid>
+                  <ion-row>
+                      <ion-col col-2>
+                <ion-avatar>
+                  <img [src]="item.picture.data.url" />
+                </ion-avatar>
+                      </ion-col>
+                      <ion-col col-10>
+                        <p>{{item.name}}</p>
+                      </ion-col>
+              </ion-row>
+              </ion-grid>
+              </ion-label>
+              <ion-checkbox item-right [(ngModel)]="item.id" (ionChange)="updateList()"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-scroll>
+</ion-card> 
 </ion-content>
