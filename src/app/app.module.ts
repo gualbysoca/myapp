@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 //Para hacer login nativo con Facebook y Firebase
 import {Facebook} from '@ionic-native/facebook';
 import firebase from 'firebase';
+import { SearchListPage } from '../pages/search-list/search-list.ts';
 
 
 export const firebaseConfig = {
@@ -37,9 +38,10 @@ firebase.initializeApp(firebaseConfig);
 @NgModule({
   declarations: [
     MyApp,
-    DetallereservaPage
+    DetallereservaPage,
     //TabsPage,
     //MenuPage
+    SearchListPage
   ],
   imports: [
     BrowserModule,
@@ -51,9 +53,10 @@ firebase.initializeApp(firebaseConfig);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    DetallereservaPage
+    DetallereservaPage,
     //TabsPage,
     //MenuPage
+    SearchListPage
   ],
   providers: [
     StatusBar,

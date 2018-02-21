@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
-import { ModalController } from 'ionic-angular';
-import { SearchListPage } from '../search-list/search-list.ts';
-
 
 @IonicPage()
 @Component({
-  selector: 'page-invite',
-  templateUrl: 'invite.html',
+  selector: 'page-search-list',
+  templateUrl: 'search-list.html',
 })
-export class InvitePage {
+export class SearchListPage {
   public isSearchbarOpnened=false;
   searchQuery: string = '';
   invitedList: Array<any> = [];
@@ -462,15 +459,15 @@ export class InvitePage {
       }
 ];
 
-  constructor(public navCtrl: NavController, 
-              //public navParams: NavParams, 
-              public modalCtrl: ModalController,
+  constructor(private navParams: NavParams, 
+              private view: ViewController,
               public facebook: Facebook) {
+    this.invitedList = this.navParams.get('data');
+    console.log(this.invitedList);
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InvitePage');
-    //alert("llego a invite")
+    console.log('ionViewDidLoad SearchListPage');
     this.loadFriendList();
   }
 
@@ -489,8 +486,8 @@ export class InvitePage {
       }
     });*/
     this.friendList = this.contactos;
-
   }
+
   getItems(ev: any) {
     // Reset items back to all of the items
     this.loadFriendList();
@@ -518,12 +515,18 @@ export class InvitePage {
     }
   }
 
-  presentModal() {
-    let modal = this.modalCtrl.create(SearchListPage, { data: this.invitedList});
-    modal.present();
-    modal.onDidDismiss(data => {
-      this.invitedList = data;
-    })
+  closeModal(){
+    this.view.dismiss(this.invitedList);
+  }
+
+  isChecked(friend){
+    var index = this.invitedList.indexOf(friend);
+    if(!index < 0){
+      console.log(friend.name +": "+index)
+      return true
+    }
+    else
+      return false
   }
 
 }

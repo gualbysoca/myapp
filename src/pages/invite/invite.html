@@ -7,13 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title *ngIf="!isSearchbarOpened">invite</ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">Amigos</ion-title>
     <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton=true (ionInput)="getItems($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
     <ion-buttons end>
       <button ion-button ionc-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
         <ion-icon name="search"></ion-icon>
       </button>
+      <button ion-button ionc-only (click)="presentModal()">
+          <ion-icon name="send"></ion-icon>
+        </button>
     </ion-buttons>
   </ion-navbar>
 
@@ -23,10 +26,6 @@
 
 
 <ion-content> 
-    <ion-card>
-        
-      
-        <ion-scroll scrollY="true">
           <ion-list no-lines no-padding>
             <ion-item *ngFor="let item of friendList">
               <ion-label>
@@ -43,9 +42,7 @@
               </ion-row>
               </ion-grid>
               </ion-label>
-              <ion-checkbox item-right [(ngModel)]="item.id" (ionChange)="updateList()"></ion-checkbox>
+              <ion-checkbox item-right checked="true" [(ngModel)]="item.id" (ionChange)="updateList(item)"></ion-checkbox>
             </ion-item>
           </ion-list>
-        </ion-scroll>
-</ion-card> 
 </ion-content>
