@@ -11,7 +11,6 @@ import { SearchListPage } from '../search-list/search-list';
   templateUrl: 'invite.html',
 })
 export class InvitePage {
-  public isSearchbarOpnened=false;
   searchQuery: string = '';
   invitedList: Array<any> = [];
   friendList: Array<any>;
@@ -507,6 +506,7 @@ export class InvitePage {
     }
   }
 
+<<<<<<< HEAD
   updateList(friend){
     console.log("nuevo");
     var index = this.invitedList.indexOf(friend);
@@ -524,6 +524,10 @@ export class InvitePage {
     modal.onDidDismiss(data => {
       this.invitedList = data;
     })
+=======
+  updateList(){
+    console.log("nuevo check");
+>>>>>>> parent of 5203def... Invite Friends - V1 Navbar Searchbar
   }
 
 }

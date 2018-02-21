@@ -7,6 +7,7 @@
 <ion-header>
 
   <ion-navbar>
+<<<<<<< HEAD
     <ion-title *ngIf="!isSearchbarOpened">Amigos</ion-title>
     <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton=true (ionInput)="getItems($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
 
@@ -18,6 +19,9 @@
           <ion-icon name="send"></ion-icon>
         </button>
     </ion-buttons>
+=======
+    <ion-title>invite</ion-title>
+>>>>>>> parent of 5203def... Invite Friends - V1 Navbar Searchbar
   </ion-navbar>
 
   
@@ -25,6 +29,7 @@
 </ion-header>
 
 
+<<<<<<< HEAD
 <ion-content> 
           <ion-list no-lines no-padding>
             <ion-item *ngFor="let item of friendList">
@@ -45,4 +50,43 @@
               <ion-checkbox item-right checked="true" [(ngModel)]="item.id" (ionChange)="updateList(item)"></ion-checkbox>
             </ion-item>
           </ion-list>
+=======
+<ion-content>
+ 
+
+  <ion-card>
+          <ion-card-header no-padding>
+              <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+          </ion-card-header>
+        
+          <ion-scroll scrollY="true">
+            <ion-list no-lines no-padding>
+              <ion-item *ngFor="let item of friendList">
+                <ion-label>
+                  <ion-grid>
+                    <ion-row>
+                        <ion-col col-2>
+                  <ion-avatar>
+                    <img [src]="item.picture.data.url" />
+                  </ion-avatar>
+                        </ion-col>
+                        <ion-col col-10>
+                          <p>{{item.name}}</p>
+                        </ion-col>
+                </ion-row>
+                </ion-grid>
+                </ion-label>
+                <ion-checkbox item-right [(ngModel)]="item.id" (ionChange)="updateList()"></ion-checkbox>
+              </ion-item>
+            </ion-list>
+          </ion-scroll>
+  </ion-card>  
+
+
+                          
+
+
+  
+
+>>>>>>> parent of 5203def... Invite Friends - V1 Navbar Searchbar
 </ion-content>
