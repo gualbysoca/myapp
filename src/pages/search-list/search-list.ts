@@ -521,12 +521,14 @@ export class SearchListPage {
 
   isChecked(friend){
     var index = this.invitedList.indexOf(friend);
-    if(!index < 0){
+    if(index < 0){
+      //console.log(friend.name +": "+index)
+      return false
+    }
+    else{
       console.log(friend.name +": "+index)
       return true
     }
-    else
-      return false
   }
 
 }

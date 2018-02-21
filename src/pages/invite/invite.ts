@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import { ModalController } from 'ionic-angular';
-import { SearchListPage } from '../search-list/search-list.ts';
+import { SearchListPage } from '../search-list/search-list';
 
 
 @IonicPage()
