@@ -19,10 +19,13 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 //Para hacer login nativo con Facebook y Firebase
-import {Facebook} from '@ionic-native/facebook';
+import { Facebook } from '@ionic-native/facebook';
 import firebase from 'firebase';
 
 import { SearchListPage } from '../pages/search-list/search-list';
+
+//Para generar codigos QR
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 export const firebaseConfig = {
@@ -49,7 +52,8 @@ firebase.initializeApp(firebaseConfig);
     IonicImageViewerModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
