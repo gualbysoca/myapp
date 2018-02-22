@@ -465,11 +465,6 @@ export class InvitePage {
               //public navParams: NavParams, 
               public modalCtrl: ModalController,
               public facebook: Facebook) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InvitePage');
-    //alert("llego a invite")
     this.loadFriendList();
   }
 
@@ -506,7 +501,7 @@ export class InvitePage {
     }
   }
 
-<<<<<<< HEAD
+
   updateList(friend){
     console.log("nuevo");
     var index = this.invitedList.indexOf(friend);
@@ -521,13 +516,9 @@ export class InvitePage {
   presentModal() {
     let modal = this.modalCtrl.create(SearchListPage, { data: this.invitedList});
     modal.present();
-    modal.onDidDismiss(data => {
+    /*modal.onDidDismiss(data => {
       this.invitedList = data;
-    })
-=======
-  updateList(){
-    console.log("nuevo check");
->>>>>>> parent of 5203def... Invite Friends - V1 Navbar Searchbar
+    })*/
   }
 
 }
