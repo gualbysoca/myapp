@@ -17,7 +17,38 @@
 
 </ion-header>
 
-
-<ion-content padding>
+<ion-content class="card-background-page">
+    <ng-container *ngFor="let evento of eventos">
+    <ion-card no-padding *ngIf="evento.display==true">
+        <img src="{{evento.imagen}}"/>
+        <!--<img src="assets/imgs/img-temp/25395741_1986106001646489_4858609190696177999_n.jpg"/>-->
+        <div class="card-mytitle">{{evento.nombre}}</div>
+        <ion-card-content padding>
+          <ion-card-title>
+            <ion-icon name="calendar" item-start></ion-icon>
+            {{evento.fecha | date: 'EEEE dd-MMM'}} 
+          </ion-card-title>
+        </ion-card-content>
+        
+        <ion-row no-padding>   
+            <button ion-button clear small color="primary" icon-start (click)="presentModal(evento)">
+            <ion-icon name='add'></ion-icon>
+              Ver más
+            </button>
+      
+          
+            <button ion-button clear small color="primary" icon-start (click)="showEvent(evento)">
+              <ion-icon name='clipboard'></ion-icon>
+              Reservar
+            </button>
+         
+          
+            <button ion-button clear small color="primary" icon-start (click)="shareVia(evento)">
+              <ion-icon name='md-share'></ion-icon>
+              Compartir
+            </button>
+        </ion-row>
+      </ion-card>
+    </ng-container>
 
 </ion-content>

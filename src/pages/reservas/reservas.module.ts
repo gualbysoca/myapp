@@ -15,6 +15,6 @@ import { ExpandableComponent } from '../../components/expandable/expandable';
   ],
   entryComponents: [
     ExpandableComponent
-  ],
+  ]
 })
 export class ReservasPageModule {}

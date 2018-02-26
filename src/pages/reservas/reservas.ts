@@ -6,6 +6,10 @@ import { MY_CONFIG_TOKEN, MY_CONFIG, ApplicationConfig } from '../../assets/conf
 
 import { ImageViewerController } from 'ionic-img-viewer';
 
+//proveedores de servicios
+import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
+import { DataHolderProvider } from '../../providers/data-holder/data-holder';
+
 
 
 /**
@@ -28,8 +32,12 @@ export class ReservasPage {
   itemExpandHeight: number;
   zonas: Array<any> = [];
   fechas: Array<any> = [];
+  eventos: Array<any> = [];
+  dateSelected: string;
 
   constructor(@Inject(MY_CONFIG_TOKEN) private config: ApplicationConfig, 
+              public fbdbprovider: FirebaseDbProvider,
+              public dataHolderProvider: DataHolderProvider,
               public navCtrl: NavController,
               public navParams: NavParams, 
               private alertCtrl: AlertController, 
@@ -38,10 +46,21 @@ export class ReservasPage {
               public imageViewerCtrl: ImageViewerController,
               public menuCtrl: MenuController) {
     this.itemExpandHeight = this.config.itemExpandHeight;
-    this.zonas = this.config.zonas;
-    this.fechas = this.config.fechas;
+    //this.zonas = this.config.zonas;
+    //this.fechas = this.config.fechas;
+    this.eventos = this.fbdbprovider.getEventos();
+    console.log(this.fbdbprovider.getEventos());
     menuCtrl.enable(true);
     this._imageViewerCtrl = imageViewerCtrl;
+    //this.dateSelected = this.dataHolderProvider.getDateSelected();
+    //this.zonas = this.dataHolderProvider.getZonasSelected();
+    //this.zonas = this.navParams.get('zonas');
+    this.dateSelected = this.navParams.get('fecha');
+  }
+
+  ionViewDidLoad() {
+    //this.dateSelected = this.dataHolderProvider.getDateSelected();
+    //alert(this.dateSelected);
   }
 
   presentImage(myImage) {
@@ -124,6 +143,24 @@ export class ReservasPage {
     this.menuCtrl.open();
   }
 
-  
+  updateZoneList(evento){
+    console.log('hace un update de las zonas');
+    //this.dateSelected = this.dataHolderProvider.getDateSelected();
+    //alert(this.dateSelected);
+
+    //this.dataHolderProvider.setDateSelected(evento.fecha);
+    //this.dataHolderProvider.setZonasSelected(evento.zonas);
+    this.dateSelected = evento.fecha;
+    this.zonas = evento.zonas;
+  }
+
+  isItSelected(evento){
+    if(this.dateSelected!= undefined && this.dateSelected==evento.fecha){
+      this.updateZoneList(evento)
+      return true
+    }
+    else
+      return false
+  }
 
 }

@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Evento</ion-title>
+
+    <ion-buttons end>
+        <button ion-button icon-only (click)="closeModal()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="openMenu()">
+            <ion-icon name="more"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h2>{{evento.nombre}}</h2>
+    <img src="{{evento.imagen}}"/>
+    <h3><ion-icon name="calendar" item-start></ion-icon>
+    {{evento.fecha | date: 'EEEE dd-MMM'}} </h3>
+    <hr>
+    <div [innerHTML]="evento.detalles"></div>
+    
+
+</ion-content>

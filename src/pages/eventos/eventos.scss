@@ -1,3 +1,30 @@
 page-eventos {
+    .card-background-page {
 
+        ion-card {
+          position: relative;
+          
+        }
+      
+        .card-mytitle {
+          position: absolute;
+          top: 75px;
+          font-size: 2.0em;
+          width: 100%;
+          font-weight: bold;
+          color: #fff;
+          text-align: center;
+        }
+      
+        .card-subtitle {
+          font-size: 1.0em;
+          position: absolute;
+          top: 80%;
+          width: 100%;
+          color: #fff;
+          text-align: center;
+        }
+      
+    }
+      
 }

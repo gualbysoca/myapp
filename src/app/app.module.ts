@@ -23,9 +23,34 @@ import { Facebook } from '@ionic-native/facebook';
 import firebase from 'firebase';
 
 import { SearchListPage } from '../pages/search-list/search-list';
+import { DetalleeventoPage } from '../pages/detalleevento/detalleevento';
 
 //Para generar codigos QR
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+
+//Para hacer Social Sharing nativo
+import { SocialSharing } from '@ionic-native/social-sharing';
+
+//proveedores de servicios
+import { FirebaseDbProvider } from '../providers/firebase-db/firebase-db';
+import { DataHolderProvider } from '../providers/data-holder/data-holder';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+//Paras el transcode a Base64
+import { Base64 } from '@ionic-native/base64';
+
+//Para persistencia de datos
+import { NativeStorage } from '@ionic-native/native-storage'; //No en uso
+
+//Para conectar con la BD de Firebase
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+
+
+
+
+
 
 
 export const firebaseConfig = {
@@ -45,7 +70,8 @@ firebase.initializeApp(firebaseConfig);
     DetallereservaPage,
     //TabsPage,
     //MenuPage
-    SearchListPage
+    SearchListPage,
+    DetalleeventoPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +79,10 @@ firebase.initializeApp(firebaseConfig);
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    NgxQRCodeModule
+    AngularFireDatabaseModule,
+    NgxQRCodeModule,
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,15 +90,20 @@ firebase.initializeApp(firebaseConfig);
     DetallereservaPage,
     //TabsPage,
     //MenuPage
-    SearchListPage
+    SearchListPage,
+    DetalleeventoPage
   ],
   providers: [
     StatusBar,
     Camera,
     SplashScreen,
     Facebook,
-    //NativeStorage,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SocialSharing,
+    Base64,
+    NativeStorage,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseDbProvider,
+    DataHolderProvider
   ]
 })
 export class AppModule {}

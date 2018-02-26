@@ -27,7 +27,7 @@
     <ion-item>
       <ion-label>Fecha</ion-label>
       <ion-select [(ngModel)]="date" interface="action-sheet">
-        <ion-option value="{{fecha}}" *ngFor="let fecha of fechas" >{{fecha}}</ion-option>
+        <ion-option value="{{evento.fecha}}" [selected]="isItSelected(evento)"  *ngFor="let evento of eventos" (ionSelect)="updateZoneList(evento)">{{evento.fecha | date: 'EEEE dd-MMM'}}</ion-option>
       </ion-select>
     </ion-item>   
   </ion-list>      
