@@ -6,7 +6,7 @@
             <ion-icon name="more"></ion-icon>
           </button>
         </ion-buttons>
-    <ion-title>Su reserva</ion-title>
+    <ion-title>Mi reserva</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -92,7 +92,7 @@
             <ion-icon name="person-add" color="dark"></ion-icon>
             Invitar amigos
           </button><br>
-          <button ion-button clear item-left icon-left *ngIf="res.estado=='reservada'">
+          <button ion-button clear item-left icon-left *ngIf="res.estado=='reservada'" (click)="shareViaFacebook(res)">
             <ion-icon name="logo-facebook" color="dark"></ion-icon>
             Publicar en Facebook
           </button><br>

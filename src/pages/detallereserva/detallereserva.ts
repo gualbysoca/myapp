@@ -1,8 +1,11 @@
 import { Component, Inject } from '@angular/core';
 import { Camera } from '@ionic-native/camera';
-import { Platform, IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, ActionSheetController, ToastController } from 'ionic-angular';
 import { ApplicationConfig, MY_CONFIG_TOKEN, MY_CONFIG } from '../../assets/config/app-config';
 //import {invitePage} from '../invite/invite.ts';
+
+//Para hacer Social Sharing nativo
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 @IonicPage()
@@ -15,6 +18,14 @@ export class DetallereservaPage {
   public base64Image: string;
   res;
   mensajes: Array<any> = [];
+  evento: Array<any> = [{
+      nombre: "Jagermeister Night",
+      detalles: "JAGERMEISTER NIGHT - 17 de febrero ven a pasar grandes momentos con tus #NuevosViejosAmigos!!\n\nLos invitamos a disfrutar de la mejor musica\n\n•Ambientes al aire libre\n•Los mejores cocteles\n•shots de jager 🥃🔥\n\nEsto y mucho mas solo en esta JAGERMEISTER NIGHT. Reserva tu mesa ya! #NuevosViejosAmigos<br>🔥SÁBADO 17 DE FEBRERO EN #ELCORTIJOPUB🔥\n\nTelefonos de Contacto para reservas\n\nEl Cortijo Pub - 75468801\nAlejandro - 70305740\n\nIngreso solo con carnet de identidad y mayores de 18 años",
+      fecha: "2018-02-16",
+      imagen: "https://scontent.flim2-1.fna.fbcdn.net/v/t1.0-9/25395741_1986106001646489_4858609190696177999_n.jpg?oh=2346df55b883585ca1b7c3bd943288c0&oe=5B07A702",
+      urlfacebook: "https://www.facebook.com/events/508374759549133/"
+  }];
+
   menuButtons: any = {
     reservada:{
       buttons: [
@@ -91,6 +102,8 @@ export class DetallereservaPage {
               public navCtrl: NavController,
               public navParams: NavParams,
               private camera: Camera,
+              private sharing: SocialSharing,
+              public toastCtrl: ToastController,
               public actionSheetCtrl: ActionSheetController) {
     this.res = navParams.data.res;
     this.mensajes = this.config.mensajes;
@@ -203,6 +216,25 @@ export class DetallereservaPage {
   inviteFriends(){
     //alert("estamos por invitar amigos...");
     this.navCtrl.push('InvitePage', {res: this.res});
+  }
+
+  shareViaFacebook(res){
+    this.sharing.shareViaFacebook("Tengo mesa!", null, this.evento[0].urlfacebook).then(()=>{ //message, image, url
+      //alert("Mensaje enviado!");
+      //this.presentToast("El evento fue compartido.");
+    }).catch((error)=>{
+      this.presentToast(error);
+    })
+    //console.log(this.evento[0].nombre);
+    //console.log(this.evento.urlfacebook);
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: this.config.toast_duration
+    });
+    toast.present();
   }
 
 }

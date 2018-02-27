@@ -10,14 +10,9 @@ import { ImageViewerController } from 'ionic-img-viewer';
 import { FirebaseDbProvider } from '../../providers/firebase-db/firebase-db';
 import { DataHolderProvider } from '../../providers/data-holder/data-holder';
 
+//Para conexion a la BD de Firebase
+//import { FirebaseListObservable } from 'angularfire2/database';
 
-
-/**
- * Generated class for the ReservasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -28,6 +23,8 @@ import { DataHolderProvider } from '../../providers/data-holder/data-holder';
 
 export class ReservasPage {
   _imageViewerCtrl: ImageViewerController;
+
+  //eventos: FirebaseListObservable<any[]>;
 
   itemExpandHeight: number;
   zonas: Array<any> = [];
@@ -48,8 +45,8 @@ export class ReservasPage {
     this.itemExpandHeight = this.config.itemExpandHeight;
     //this.zonas = this.config.zonas;
     //this.fechas = this.config.fechas;
-    this.eventos = this.fbdbprovider.getEventos();
-    console.log(this.fbdbprovider.getEventos());
+    this.eventos = this.fbdbprovider.getEventos();  //habilitar esto luego
+    //console.log(this.fbdbprovider.getEventos());
     menuCtrl.enable(true);
     this._imageViewerCtrl = imageViewerCtrl;
     //this.dateSelected = this.dataHolderProvider.getDateSelected();
@@ -59,6 +56,7 @@ export class ReservasPage {
   }
 
   ionViewDidLoad() {
+    //this.dateSelected = this.navParams.get('fecha');
     //this.dateSelected = this.dataHolderProvider.getDateSelected();
     //alert(this.dateSelected);
   }
@@ -162,5 +160,6 @@ export class ReservasPage {
     else
       return false
   }
+
 
 }
